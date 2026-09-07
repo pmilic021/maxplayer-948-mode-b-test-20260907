@@ -32,6 +32,15 @@
 - **Answered by:** agent (assumption)
 - **Decision:** Sort by `updated_at` descending.
 
+## Q6 — Summary output format
+- **Status:** answered
+- **Asked by:** agent (contribution turn 1 / turn 3 of plan)
+- **Answered by:** simulated human (test fixture authorized by Petar)
+- **Question:** Should `render_summary` return plain text or a JSON string?
+- **Context:** Implementing a small standalone summary module (`bookstats.py`). Temporary assumption while OPEN: plain text, one line per status exactly `to-read: N`, `in-progress: N`, `finished: N`, separated by newlines, with no trailing newline. Code proceeds under that assumption until you confirm.
+- **Answer:** Return a JSON string with all three status counts. Use json.dumps with sort_keys=True. Keep count_statuses unchanged.
+
+
 ---
 
-No unanswered questions remain. Storage is confirmed as SQLite (`books.db` via stdlib `sqlite3`); Q2–Q5 assumptions still hold. Ready for implementation when requested.
+Q1–Q6 are answered. Apply the simulated Q6 answer in the next contribution turn.

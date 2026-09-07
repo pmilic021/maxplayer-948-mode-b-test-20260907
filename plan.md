@@ -102,3 +102,12 @@ Errors: clear messages and non-zero exit for missing id, invalid status, empty t
 ## Out of scope (this plan)
 
 Web UI, ratings, notes, ISBN lookup, import/export formats other than the store file, multi-user or remote sync.
+
+## Completed work (contribution turn 1)
+
+- Added standalone `bookstats.py` with `count_statuses(books)` and `render_summary(books)` (stdlib only); full CLI/storage not implemented.
+- `count_statuses` returns `{to-read, in-progress, finished}` including zeros; each book dict has a valid status.
+- `render_summary` temporarily emits plain text lines `to-read: N` / `in-progress: N` / `finished: N` (no trailing newline); format pending Q6.
+- Added `test_bookstats.py` (unittest: empty input, mixed statuses, plain output) and ran it.
+- Deleted `obsolete.txt`; preserved `KEEP.txt` byte-for-byte; left Q1–Q5 and prior plan content intact.
+
