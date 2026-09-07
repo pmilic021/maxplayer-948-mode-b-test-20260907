@@ -111,3 +111,9 @@ Web UI, ratings, notes, ISBN lookup, import/export formats other than the store 
 - Added `test_bookstats.py` (unittest: empty input, mixed statuses, plain output) and ran it.
 - Deleted `obsolete.txt`; preserved `KEEP.txt` byte-for-byte; left Q1–Q5 and prior plan content intact.
 
+## Completed work (contribution turn 2)
+
+- Applied Q6: `render_summary` now returns `json.dumps(count_statuses(books), sort_keys=True)`; `count_statuses` unchanged.
+- Updated output tests to assert the JSON string and decoded counts; ran the tests.
+- Preserved prior plan content; `KEEP.txt` byte-for-byte; Q1–Q6 attributions; did not recreate `obsolete.txt`.
+

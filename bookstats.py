@@ -1,5 +1,7 @@
 """Summary helpers for book tracker status counts."""
 
+import json
+
 STATUSES = ("to-read", "in-progress", "finished")
 
 
@@ -15,9 +17,5 @@ def count_statuses(books):
 
 
 def render_summary(books):
-    """Return a plain-text summary, one line per status, no trailing newline.
-
-    Temporary assumption (Q6 OPEN): plain text rather than JSON.
-    """
-    counts = count_statuses(books)
-    return "\n".join(f"{status}: {counts[status]}" for status in STATUSES)
+    """Return a JSON string of status counts (sort_keys=True)."""
+    return json.dumps(count_statuses(books), sort_keys=True)

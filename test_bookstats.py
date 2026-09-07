@@ -1,5 +1,6 @@
 """unittest coverage for bookstats summary helpers."""
 
+import json
 import unittest
 
 from bookstats import count_statuses, render_summary
@@ -28,24 +29,31 @@ class TestCountStatuses(unittest.TestCase):
 
 
 class TestRenderSummary(unittest.TestCase):
-    def test_plain_output_empty(self):
+    def test_json_output_empty(self):
+        raw = render_summary([])
         self.assertEqual(
-            render_summary([]),
-            "to-read: 0\nin-progress: 0\nfinished: 0",
+            raw,
+            json.dumps(
+                {"finished": 0, "in-progress": 0, "to-read": 0},
+                sort_keys=True,
+            ),
+        )
+        self.assertEqual(
+            json.loads(raw),
+            {"to-read": 0, "in-progress": 0, "finished": 0},
         )
 
-    def test_plain_output_mixed(self):
+    def test_json_output_mixed(self):
         books = [
             {"status": "finished"},
             {"status": "to-read"},
             {"status": "in-progress"},
             {"status": "to-read"},
         ]
-        self.assertEqual(
-            render_summary(books),
-            "to-read: 2\nin-progress: 1\nfinished: 1",
-        )
-        self.assertFalse(render_summary(books).endswith("\n"))
+        raw = render_summary(books)
+        expected_counts = {"to-read": 2, "in-progress": 1, "finished": 1}
+        self.assertEqual(raw, json.dumps(expected_counts, sort_keys=True))
+        self.assertEqual(json.loads(raw), expected_counts)
 
 
 if __name__ == "__main__":

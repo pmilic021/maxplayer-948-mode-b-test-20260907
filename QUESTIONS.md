@@ -43,4 +43,4 @@
 
 ---
 
-Q1–Q6 are answered. Apply the simulated Q6 answer in the next contribution turn.
+No unanswered questions remain. Q1–Q6 are answered; the Q6 decision is final and was applied in contribution turn 2 (`render_summary` → JSON via `json.dumps(..., sort_keys=True)`).
