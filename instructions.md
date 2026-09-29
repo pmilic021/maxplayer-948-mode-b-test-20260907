@@ -1,0 +1,1 @@
+there is only one task: Use the job runner's network view and local host records to list devices on its directly attached subnet. Include names, private addresses, and advertised services.
